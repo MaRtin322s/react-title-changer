@@ -1,7 +1,17 @@
 import "./App.css";
-import Counter from "./Counter";
+import { useEffect, useState } from "react";
 
 function App() {
+    const [count, setCount] = useState(1);
+
+    useEffect(() => {
+        document.title = `Click (${count})`;
+    }, [count]);
+
+    const clickHandler = () => {
+        setCount(state => state + 1);
+    }
+
     return (
         <div className="App">
             <section className="hero">
@@ -15,7 +25,7 @@ function App() {
                     Edit the <code>./src</code> folder to add components.
                 </div>
             </div>
-            <Counter />
+            <button onClick={clickHandler}>Click ({count})</button>
         </div>
     );
 }
